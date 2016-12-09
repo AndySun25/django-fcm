@@ -7,6 +7,5 @@ router = routers.DefaultRouter()
 router.register(r'devices', DeviceViewSet)
 
 urlpatterns = [
-    url(r'v1/', include(router.urls))
-
+    url(r'v1/', include(router.urls)),
 ]

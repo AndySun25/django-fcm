@@ -22,7 +22,6 @@ def get_device_model():
 
 
 class FCMMessage(object):
-
     def __init__(self):
         """
         you will not reach to test self.api_key if it is not set in settings...

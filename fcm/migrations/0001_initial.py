@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+from django.db.models import CASCADE, settings
 
 
 class Migration(migrations.Migration):
@@ -20,6 +21,7 @@ class Migration(migrations.Migration):
                 ('reg_id', models.CharField(max_length=255, unique=True, verbose_name='Registration ID')),
                 ('name', models.CharField(blank=True, max_length=255, null=True, verbose_name='Name')),
                 ('is_active', models.BooleanField(default=False, verbose_name='Is active?')),
+                ('user', models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE))
             ],
             options={
                 'verbose_name_plural': 'Devices',
