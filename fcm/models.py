@@ -1,6 +1,7 @@
 import logging
 
-from django.db.models import CASCADE, settings
+from django.conf import settings
+from django.db.models import CASCADE
 from django.db.models.query import QuerySet
 from django.db import models
 from fcm.utils import FCMMessage

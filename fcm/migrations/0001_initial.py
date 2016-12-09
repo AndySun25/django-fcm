@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-from django.db.models import CASCADE, settings
+from django.db.models import CASCADE
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
