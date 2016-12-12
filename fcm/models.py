@@ -36,8 +36,6 @@ class AbstractDevice(models.Model):
 
     class Meta:
         abstract = True
-        verbose_name = "Device"
-        verbose_name_plural = "Devices"
 
     def send_message(self, data, **kwargs):
         return FCMMessage().send(
@@ -54,3 +52,5 @@ class AbstractDevice(models.Model):
 class Device(AbstractDevice):
     class Meta:
         swappable = 'FCM_DEVICE_MODEL'
+        verbose_name = "Device"
+        verbose_name_plural = "Devices"
