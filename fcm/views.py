@@ -9,21 +9,19 @@ class DeviceViewSet(viewsets.ModelViewSet):
     serializer_class = DeviceSerializer
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        try:
+            device = Device.objects.get(dev_id=request.data.get("dev_id"))
+            serializer = self.get_serializer(device, data=request.data)
+        except Device.DoesNotExist:
+            serializer = self.get_serializer(data=request.data)
+
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return response.Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
-        try:
-            device = Device.objects.get(dev_id=serializer.data["dev_id"])
-        except Device.DoesNotExist:
-            device = Device(dev_id=serializer.data["dev_id"])
-        device.is_active = True
-        device.reg_id = serializer.data["reg_id"]
-        device.name = serializer.data["name"]
-        device.save()
+        serializer.save(is_active=True)
 
     def destroy(self, request, *args, **kwargs):
         try:
