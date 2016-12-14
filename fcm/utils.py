@@ -68,7 +68,7 @@ class FCMMessage(object):
         if len(registration_ids) > self.max_recipients:
             ret = []
             for chunk in self._chunks(
-                    registration_ids, settings.FCM_MAX_RECIPIENTS):
+                    registration_ids, self.max_recipients):
                 ret.append(self.send(data, registration_ids=chunk, **kwargs))
             return ret
 
