@@ -28,6 +28,7 @@ class AbstractDevice(models.Model):
     name = models.CharField(verbose_name="Name", max_length=255, blank=True, null=True)
     is_active = models.BooleanField(verbose_name="Is active?", default=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     objects = DeviceManager()
 
