@@ -1,4 +1,3 @@
-from optparse import make_option
 from django.core.management.base import BaseCommand, CommandError
 
 from fcm.utils import get_device_model
@@ -11,7 +10,7 @@ class Command(BaseCommand):
     help = 'Send message through fcm api'
 
     def add_arguments(self, parser):
-        #this store list
+        # this store list
         parser.add_argument('--device_id', nargs='*', type=str)
         parser.add_argument('--msg', nargs='*', type=str)
 
@@ -54,8 +53,7 @@ class Command(BaseCommand):
                     'Unknown device (id=%s). Check list: '
                     'python manage.py fcm_messenger --devices' % id)
             else:
-                result = device.send_message(
-                        {'message': message}, collapse_key=collapse_key)
+                result = device.send_message({'message': message}, collapse_key=collapse_key)
 
                 self.stdout.write("[OK] device #%s (%s): %s\n" %
                                   (id, device.name, result))

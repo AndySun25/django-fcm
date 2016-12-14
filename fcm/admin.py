@@ -1,7 +1,6 @@
 from functools import update_wrapper
 from django.contrib import admin
 from django.shortcuts import redirect, render
-from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from .forms import MessageForm

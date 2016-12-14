@@ -4,7 +4,6 @@ from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
 from django.conf import settings
-from django.utils.module_loading import import_module
 
 DEFAULT_FCM_DEVICE_MODEL = 'fcm.Device'
 
@@ -66,7 +65,7 @@ class FCMMessage(object):
 
         registration_ids = registration_ids or []
 
-        if len(registration_ids) >self.max_recipients:
+        if len(registration_ids) > self.max_recipients:
             ret = []
             for chunk in self._chunks(
                     registration_ids, settings.FCM_MAX_RECIPIENTS):
