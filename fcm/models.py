@@ -23,7 +23,7 @@ class DeviceManager(models.Manager):
 
 
 class AbstractDevice(models.Model):
-    dev_id = models.CharField(verbose_name="Device ID", max_length=50)
+    dev_id = models.CharField(verbose_name="Device ID", max_length=50, unique=True)
     reg_id = models.CharField(verbose_name="Registration ID", max_length=255, unique=True)
     name = models.CharField(verbose_name="Name", max_length=255, blank=True, null=True)
     is_active = models.BooleanField(verbose_name="Is active?", default=False)

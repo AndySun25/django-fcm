@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='device',
             name='dev_id',
-            field=models.CharField(max_length=50, verbose_name='Device ID'),
+            field=models.CharField(max_length=50, verbose_name='Device ID', unique=True),
         )
     ]
